@@ -109,4 +109,19 @@ public class User{
             ", userType='" + getUserType() + "'" +
             "}";
     }
+
+    public String[] toCSV()
+    {
+        String[] csvValues =
+        {
+            username,
+            password,
+            name,
+            surname,
+            gender,
+            birthDate.toString(),
+            userType.toString()
+        };
+        return csvValues;
+    }
 }

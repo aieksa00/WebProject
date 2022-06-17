@@ -1,8 +1,12 @@
 package services;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.StringTokenizer;
@@ -63,6 +67,41 @@ public class UserService {
 		}
 	}
 
+	private static String DELIMITER1 = ";";
+
+    public void writeUsers(User user)
+    {
+		try{
+			/*
+			File file = new File("static\\users.txt");
+			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+
+			for(User user: users.values()){
+				String line = String.join(DELIMITER1, user.toCSV());
+				bufferedWriter.append(line);
+				bufferedWriter.newLine();
+			}
+			bufferedWriter.close();*/
+			// Assigning the content of the file
+			String line = String.join(DELIMITER1, user.toCSV());
+ 
+			// Defining the file name of the file
+			Path fileName = Path.of(
+				"static\\users.txt");
+	
+			// Writing into the file
+			Files.writeString(fileName, line);
+	
+			// Reading the content of the file
+			String file_content = Files.readString(fileName);
+	
+			// Printing the content inside the file
+			System.out.println(file_content);
+		}catch(Exception e){
+
+		}
+    }
+
     private UserType StringToUserType(String s){
 		switch(s){
 			case "Customer": return UserType.Customer;
@@ -84,6 +123,7 @@ public class UserService {
 
 	public void addUser(User user) {
 		this.users.put(user.getUsername(), user);
+		writeUsers(user);
 	}
 
 	public void editUser(String username, User user) {

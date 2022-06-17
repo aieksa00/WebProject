@@ -1,7 +1,7 @@
-package rest;
+package Spark;
 
-import static spark.Spark.port;
 import static spark.Spark.staticFiles;
+import static spark.Spark.port;
 import java.io.File;
 import controller.ProductController;
 import controller.UserController;
