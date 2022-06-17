@@ -3,5 +3,5 @@ public enum UserType {
     Administrator,
     Manager,
     Trainer, 
-    Costumer
+    Customer
 }

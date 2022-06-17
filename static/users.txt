@@ -1,0 +1,3 @@
+Pera;sifra;Petar;Peric;Musko;12/12/2000;Customer
+Perica;sifrica;Petar;Peric;Musko;12/12/2000;Customer
+Mirko;peder;Petar;Peric;Musko;12/12/2000;Customer
