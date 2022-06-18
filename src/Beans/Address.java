@@ -50,10 +50,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return
-            getStreet() + " " +
-            getNumber() + "\n" +
-            getCity() + "\n" +
-            getPostCode();
+        return getStreet()+","+getNumber()+","+getCity()+","+getPostCode();
     }
 }

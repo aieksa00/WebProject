@@ -58,10 +58,6 @@ public class Location {
 
     @Override
     public String toString() {
-        return "{" +
-            " geoLength='" + getGeoLength() + "'" +
-            ", geoWidth='" + getGeoWidth() + "'" +
-            ", address='" + getAddress() + "'" +
-            "}";
+        return getGeoLength()+","+geoWidth+","+getAddress().toString();
     }   
 }

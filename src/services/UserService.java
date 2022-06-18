@@ -1,14 +1,9 @@
 package services;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,7 +15,6 @@ import java.text.SimpleDateFormat;
 
 import Beans.User;
 import Beans.UserType;
-import io.jsonwebtoken.io.IOException;
 
 public class UserService {
 	
@@ -104,7 +98,6 @@ public class UserService {
 		return users.values();
 	}
 
-	/** Vraca proizvod na osnovu njegovog id-a. */
 	public User getUser(String username) {
 		return users.get(username);
 	}

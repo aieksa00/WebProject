@@ -112,4 +112,19 @@ public class SportsObject {
             ", workingHours='" + getWorkingHours() + "'" +
             "}";
     }
+
+    public String[] toCSV()
+    {
+        String[] csvValues =
+        {
+            name,
+            objectType,
+            description,
+            String.valueOf(status),
+            location.toString(),
+            rating.toString(),
+            workingHours
+        };
+        return csvValues;
+    }
 }
