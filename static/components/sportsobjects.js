@@ -7,11 +7,26 @@ Vue.component("sportsobjects", {
 	    template: ` 
     	<div>
     		<h2>Prikaz sportskih objekata</h2>
-            <ul>
-                <li v-for="(o,index) in objects">
-                    {{o.name}}
-                </li>
-            </ul>
+            <table border="1">
+	    		<tr bgcolor="lightgrey">
+	    			<th>Name</th>
+	    			<th>Object Type</th>
+                    <th>Description</th>
+	    			<th>Status</th>
+					<th>Location</th>
+					<th>Rating</th>
+					<th>Working Hours</th>
+	    		</tr>	    			
+	    		<tr v-for="(o, index) in objects">
+	    			<td>{{o.name}}</td>
+	    			<td>{{o.objectType}}</td>
+                    <td>{{o.description}}</td>
+                    <td>{{o.status}}</td>
+					<td>{{o.location}}</td>
+					<td>{{o.rating}}</td>
+					<td>{{o.workingHours}}</td>
+	    		</tr>
+	    	</table>
     	</div>		  
     	`,
     mounted () {
