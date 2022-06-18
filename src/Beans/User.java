@@ -1,5 +1,6 @@
 package Beans;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -114,6 +115,7 @@ public class User{
 
     public String[] toCSV()
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String[] csvValues =
         {
             username,
@@ -121,7 +123,7 @@ public class User{
             name,
             surname,
             gender,
-            birthDate.getDay()+"/"+birthDate.getMonth()+"/"+birthDate.getYear(),
+            sdf.format(birthDate),
             userType.toString()
         };
         return csvValues;

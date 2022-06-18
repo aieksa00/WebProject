@@ -1,6 +1,7 @@
-Pera;sifra;Petar;Peric;Musko;2/11/100;Customer
-Perica;sifrica;Petar;Peric;Musko;3/11/100;Customer
-Mare;sifra;Marko;Markic;Male;2/5/102;Customer
-Mirko;peder;Petar;Peric;Musko;0/9/100;Customer
-Mirkovic;peder;Petar;Peric;Musko;1/0/101;Customer
-Maska;123;Masa;kurva;zena;0/5/122;Customer
+Pera;sifra;Petar;Peric;Musko;12/12/2002;Customer
+Perica;sifrica;Petar;Peric;Musko;02/12/2000;Customer
+Mare;sifra;Marko;Markic;Male;12/12/2003;Customer
+User;pass;Novo;Ime;musko;17/06/2022;Customer
+Mirko;peder;Petar;Peric;Musko;11/12/2000;Customer
+Mirkovic;peder;Petar;Peric;Musko;12/12/2000;Customer
+Maska;123;Masa;kurva;zena;12/11/2000;Customer
