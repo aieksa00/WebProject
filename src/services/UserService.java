@@ -3,17 +3,24 @@ package services;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.text.SimpleDateFormat;
 
 import Beans.User;
 import Beans.UserType;
+import io.jsonwebtoken.io.IOException;
 
 public class UserService {
 	
@@ -67,40 +74,21 @@ public class UserService {
 		}
 	}
 
-	private static String DELIMITER1 = ";";
-
-    public void writeUsers(User user)
-    {
-		try{
-			/*
-			File file = new File("static\\users.txt");
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-
-			for(User user: users.values()){
-				String line = String.join(DELIMITER1, user.toCSV());
-				bufferedWriter.append(line);
-				bufferedWriter.newLine();
-			}
-			bufferedWriter.close();*/
-			// Assigning the content of the file
-			String line = String.join(DELIMITER1, user.toCSV());
- 
-			// Defining the file name of the file
-			Path fileName = Path.of(
-				"static\\users.txt");
-	
-			// Writing into the file
-			Files.writeString(fileName, line);
-	
-			// Reading the content of the file
-			String file_content = Files.readString(fileName);
-	
-			// Printing the content inside the file
-			System.out.println(file_content);
-		}catch(Exception e){
-
+    public void writeUsers()
+    {		
+		List<String[]> dataLines = new ArrayList<>();
+		for(User user: users.values())
+			dataLines.add(user.toCSV());
+		File csvOutputFile = new File("static\\users.txt");
+		try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
+			dataLines.stream().map(this::convertToCSV).forEach(pw::println);
 		}
+		catch(Exception e){}
     }
+
+	public String convertToCSV(String[] data) {
+		return Stream.of(data).collect(Collectors.joining(";"));
+	}
 
     private UserType StringToUserType(String s){
 		switch(s){
@@ -123,7 +111,7 @@ public class UserService {
 
 	public void addUser(User user) {
 		this.users.put(user.getUsername(), user);
-		writeUsers(user);
+		writeUsers();
 	}
 
 	public void editUser(String username, User user) {

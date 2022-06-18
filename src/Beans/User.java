@@ -1,5 +1,7 @@
 package Beans;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class User{
@@ -119,7 +121,7 @@ public class User{
             name,
             surname,
             gender,
-            birthDate.toString(),
+            birthDate.getDay()+"/"+birthDate.getMonth()+"/"+birthDate.getYear(),
             userType.toString()
         };
         return csvValues;

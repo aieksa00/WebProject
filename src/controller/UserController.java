@@ -3,6 +3,9 @@ package controller;
 import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.put;
+
+import java.text.SimpleDateFormat;
+
 import static spark.Spark.post;
 
 import com.google.gson.Gson;
@@ -31,16 +34,19 @@ public class UserController {
 	}
 	
 	public static void addUser() {
-		post("rest/users/add", (req, res) -> {
+		post("rest/users/add/:date", (req, res) -> {
 			res.type("application/json");
 			User pd = g.fromJson(req.body(), User.class);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String d = req.params("date");
+			pd.setBirthDate(sdf.parse(d));
 			userService.addUser(pd);
 			return "SUCCESS";
 		});
 	}
 	
 	public static void editUser() {
-		put("rest/Users/edit/:id", (req, res) -> {
+		put("rest/users/edit/:id", (req, res) -> {
 			res.type("application/json");
 			String id = req.params("id");
 			User pd = g.fromJson(req.body(), User.class);
@@ -50,7 +56,7 @@ public class UserController {
 	}
 	
 	public static void deleteUser() {
-		delete("rest/Users/delete/:id", (req, res) -> {
+		delete("rest/users/delete/:id", (req, res) -> {
 			res.type("application/json");
 			String id = req.params("id");
 			userService.deleteUser(id);

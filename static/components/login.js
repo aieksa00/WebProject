@@ -12,12 +12,10 @@ Vue.component("login", {
                 <table>
                     <tr><td>Username</td><td><input type="text" v-model = "username" name="username"></td></tr>
                     <tr><td>Password</td><td><input type="password" v-model = "password" name="password"></td></tr>
-                    <tr><td><button v-on:click="login">Login</button></td></tr>
-                    <tr><td><button v-on:click="register">Register</button></td></tr>
+                    <tr><td><input type = "submit" v-on:click="login" value = "Login"></td></tr>
                 </table>
-                <p id="error"></p>
-                <p id="success"></p>
             </form>
+            <button v-on:click = "register">Register</button>
     	</div>		  
     	`,
     mounted () {
@@ -26,7 +24,8 @@ Vue.component("login", {
           .then(response => (this.users = response.data))       
     },
     methods: {
-    	login : function() {  
+    	login : function() { 
+            event.preventDefault();  
             let b = false;          
             this.users.forEach(user => {                
                 if(user.username==this.username && user.password==this.password){
