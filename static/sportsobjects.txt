@@ -1,0 +1,2 @@
+Spens;Bazen;2 zatvorena bazena i jedan otvoreni;false;20,20,Bulevar Cara Lazara,15,Novi Sad,21000;4,8;07-22
+Hotel park;Sauna;Jedna jako lepa sauna;false;20,20,Bulevar Cara Lazara,15,Novi Sad,21000;4,8;07-22

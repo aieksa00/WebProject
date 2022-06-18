@@ -23,7 +23,7 @@ Vue.component("users", {
 					<td>{{p.birthDate}}</td>
 	    		</tr>
 	    	</table>
-    		<button v-on:click = "addProduct">Dodaj nov proizvod</button>
+			<button v-on:click="viewobjects">View sports objects</button>
     	</div>		  
     	`,
     mounted () {
@@ -32,19 +32,8 @@ Vue.component("users", {
           .then(response => (this.users = response.data))
     },
     methods: {
-    	addProduct : function() {
-    		router.push(`/products/-1`);
-    	},
-    	editProduct : function(id) {
-    		router.push(`/products/${id}`);
-    	},
-    	deleteProduct : function(id, index) {
-    		r = confirm("Are you sure?")
-    		if (r){
-	    		axios
-	            .delete('rest/products/delete/' + id)
-	            .then(response => (this.products.splice(index, 1)))
-    		}
+    	viewobjects : function() {
+    		router.push(`/sportsobjects/`);
     	}
     }
 });
