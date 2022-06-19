@@ -10,13 +10,13 @@ Vue.component("register", {
     	<div>
             <form id="forma">
                 <table>
-                    <tr><td>Name:</td><td><input type="text" v-model = "user.name" name="name"></td></tr>
-                    <tr><td>Surname:</td><td><input type="text" v-model = "user.surname" name="surname"></td></tr>
-                    <tr><td>Gender:</td><td><input type="text" v-model = "user.gender" name="gender"></td></tr>
-                    <tr><td>Birth date:</td><td><input type="date" v-model = "date" name="date"></td></tr>
-                    <tr><td>Username:</td><td><input type="text" v-model = "user.username" name="username"></td></tr>
-                    <tr><td>Password:</td><td><input type="password" v-model = "user.password" name="password"></td></tr>
-                    <tr><td><input type = "submit" v-on:click="register" value = "Register"></td></tr>
+                    <tr><td>Ime:</td><td><input type="text" v-model = "user.name" name="name"></td></tr>
+                    <tr><td>Prezime:</td><td><input type="text" v-model = "user.surname" name="surname"></td></tr>
+                    <tr><td>Pol:</td><td><input type="text" v-model = "user.gender" name="gender"></td></tr>
+                    <tr><td>Datum rođenja:</td><td><input type="date" v-model = "date" name="date"></td></tr>
+                    <tr><td>Korisničko ime:</td><td><input type="text" v-model = "user.username" name="username"></td></tr>
+                    <tr><td>Lozinka:</td><td><input type="password" v-model = "user.password" name="password"></td></tr>
+                    <tr><td><input type = "submit" v-on:click="register" value = "Registruj se!"></td></tr>
                 </table>
             </form>
     	</div>		  

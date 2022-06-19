@@ -42,7 +42,7 @@ public class SportsObjectService {
 
 
     private void readSportsObjects(BufferedReader in) {
-		String line, id="" ,name = "", objectType = "", description = "", status = "", location = "", rating = "", workingHours="";
+		String line, id="" ,name = "", objectType = "", description = "", status = "", location = "", rating = "", workingHours="", image="";
 		StringTokenizer st;
 		try {
 			while ((line = in.readLine()) != null) {
@@ -59,8 +59,9 @@ public class SportsObjectService {
                     location = st.nextToken().trim();
                     rating = st.nextToken().trim();
                     workingHours = st.nextToken().trim();
+					image = st.nextToken().trim();
 				}
-				SportsObject sportsObject = new SportsObject(name,objectType,description,Boolean.parseBoolean(status),StringToLocation(location),Double.parseDouble(rating),workingHours);
+				SportsObject sportsObject = new SportsObject(name,objectType,description,Boolean.parseBoolean(status),StringToLocation(location),Double.parseDouble(rating),workingHours,image);
 				sportsobjects.put(id, sportsObject);
 			}
 		} catch (Exception ex) {
@@ -120,5 +121,40 @@ public class SportsObjectService {
 		this.sportsobjects.remove(id);
 	}
 
+	public Collection<SportsObject> getSportsObjectsByName(String s) {
+		HashMap<String, SportsObject> filteredSportsObjects = new HashMap<>();
+		for (SportsObject sportsObject : sportsobjects.values()) {
+			if(sportsObject.getName().contains(s))
+				filteredSportsObjects.put(sportsObject.getName(), sportsObject);
+		}
+		return filteredSportsObjects.values();
+	}
+
+	public Collection<SportsObject> getSportsObjectsByType(String s) {
+		HashMap<String, SportsObject> filteredSportsObjects = new HashMap<>();
+		for (SportsObject sportsObject : sportsobjects.values()) {
+			if(sportsObject.getObjectType().contains(s))
+				filteredSportsObjects.put(sportsObject.getName(), sportsObject);
+		}
+		return filteredSportsObjects.values();
+	}
+
+	public Collection<SportsObject> getSportsObjectsByLocation(String s) {
+		HashMap<String, SportsObject> filteredSportsObjects = new HashMap<>();
+		for (SportsObject sportsObject : sportsobjects.values()) {
+			if(sportsObject.getLocation().toString().contains(s))
+				filteredSportsObjects.put(sportsObject.getName(), sportsObject);
+		}
+		return filteredSportsObjects.values();
+	}
+
+	public Collection<SportsObject> getSportsObjectsByRating(String s) {
+		HashMap<String, SportsObject> filteredSportsObjects = new HashMap<>();
+		for (SportsObject sportsObject : sportsobjects.values()) {
+			if(sportsObject.getRating() > Double.parseDouble(s))
+				filteredSportsObjects.put(sportsObject.getName(), sportsObject);
+		}
+		return filteredSportsObjects.values();
+	}
 }
 

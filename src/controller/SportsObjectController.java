@@ -57,6 +57,21 @@ public class SportsObjectController {
 			return "SUCCESS";
 		});
 	}
+
+	public static void getSportsObjectsSearch() {
+		get("rest/sportsobjects/:searchParam/:searchInput", (req, res) -> {
+			res.type("application/json");
+			String param = req.params("searchParam");
+			String input = req.params("searchInput");
+			switch(param){
+				case "objectType": return g.toJson(sportsobjectService.getSportsObjectsByType(input));
+				case "name": return g.toJson(sportsobjectService.getSportsObjectsByName(input));
+				case "location": return g.toJson(sportsobjectService.getSportsObjectsByLocation(input));
+				case "rating": return g.toJson(sportsobjectService.getSportsObjectsByRating(input));
+				default: return g.toJson(sportsobjectService.getSportsObjectsByName(input));
+			}
+		});
+	}
 }
 
 

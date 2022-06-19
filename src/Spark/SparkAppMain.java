@@ -4,6 +4,7 @@ import static spark.Spark.staticFiles;
 import static spark.Spark.port;
 import java.io.File;
 import controller.ProductController;
+import controller.SportsObjectController;
 import controller.UserController;
 
 public class SparkAppMain {
@@ -24,5 +25,12 @@ public class SparkAppMain {
 		UserController.addUser();
 		UserController.editUser();
 		UserController.deleteUser();
+
+		SportsObjectController.getSportsObjects();
+		SportsObjectController.getSportsObject();
+		SportsObjectController.addSportsObject();
+		SportsObjectController.editSportsObject();
+		SportsObjectController.deleteSportsObject();
+		SportsObjectController.getSportsObjectsSearch();
 	}
 }

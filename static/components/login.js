@@ -3,20 +3,28 @@ Vue.component("login", {
 	    return {
 	      username: null,
           password: null,
-          users: null
+          users: null,
+          errorMessage: null,
 	    }
 	},
 	    template: ` 
-    	<div>
+    	<div class="container">
+            <div>
             <form id="forma">
                 <table>
-                    <tr><td>Username</td><td><input type="text" v-model = "username" name="username"></td></tr>
-                    <tr><td>Password</td><td><input type="password" v-model = "password" name="password"></td></tr>
-                    <tr><td><input type = "submit" v-on:click="login" value = "Login"></td></tr>
+                    <tr><td>Korisničko ime:</td><td><input type="text" v-model = "username" name="username"></td></tr>
+                    <tr><td>Lozinka:</td><td><input type="password" v-model = "password" name="password"></td></tr>
+                    <tr><td colspan='2'>{{errorMessage}}</td></tr>
                 </table>
             </form>
-            <button v-on:click = "register">Register</button>
-    	</div>		  
+            </div>
+            <div>
+            <button v-on:click = "login">Uloguj se!</button>
+            </div>
+            <div>  
+            <button v-on:click = "register">Registruj se?</button>  
+            </div>
+    	</div>	
     	`,
     mounted () {
         axios
@@ -34,7 +42,7 @@ Vue.component("login", {
                 }              
             });
             if(!b)
-                console.log('Wrong username or password');
+                this.errorMessage = 'Pogrešno korisničko ime ili lozinka';
     		
     	},
         register : function(){

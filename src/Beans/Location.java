@@ -58,6 +58,6 @@ public class Location {
 
     @Override
     public String toString() {
-        return getGeoLength()+","+geoWidth+","+getAddress().toString();
+        return getGeoLength()+","+getGeoWidth()+","+getAddress().toString();
     }   
 }

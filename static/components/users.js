@@ -9,11 +9,11 @@ Vue.component("users", {
     		<h3>Prikaz korisnika</h3>
     		<table border="1">
 	    		<tr bgcolor="lightgrey">
-	    			<th>Username</th>
-	    			<th>Password</th>
-                    <th>Name</th>
-	    			<th>Surname</th>
-					<th>Birthdate</th>
+	    			<th>Korisničko ime</th>
+	    			<th>Lozinka</th>
+                    <th>Ime</th>
+	    			<th>Prezime</th>
+					<th>Datum Rođenja</th>
 	    		</tr>	    			
 	    		<tr v-for="(p, index) in users">
 	    			<td>{{p.username}}</td>
@@ -23,7 +23,7 @@ Vue.component("users", {
 					<td>{{p.birthDate}}</td>
 	    		</tr>
 	    	</table>
-			<button v-on:click="viewobjects">View sports objects</button>
+			<button v-on:click="viewobjects">Prikaži sportske objekte</button>
     	</div>		  
     	`,
     mounted () {
