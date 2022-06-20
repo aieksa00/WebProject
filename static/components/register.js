@@ -3,23 +3,46 @@ Vue.component("register", {
 	    return {
           users: null,
           date: null,
-          user: {username:null, password:null, name:null, surname:null, gender:null, birthDate:null, userType:'Customer'}
+          user: {username:null, password:null, name:null, surname:null, gender:null, birthDate:null, userType:'Customer'},
+          errorMessage:null
 	    }
 	},
 	    template: ` 
-    	<div>
+        <div>
+            <div class="container">
             <form id="forma">
-                <table>
-                    <tr><td>Ime:</td><td><input type="text" v-model = "user.name" name="name"></td></tr>
-                    <tr><td>Prezime:</td><td><input type="text" v-model = "user.surname" name="surname"></td></tr>
-                    <tr><td>Pol:</td><td><input type="text" v-model = "user.gender" name="gender"></td></tr>
-                    <tr><td>Datum rođenja:</td><td><input type="date" v-model = "date" name="date"></td></tr>
-                    <tr><td>Korisničko ime:</td><td><input type="text" v-model = "user.username" name="username"></td></tr>
-                    <tr><td>Lozinka:</td><td><input type="password" v-model = "user.password" name="password"></td></tr>
-                    <tr><td><input type = "submit" v-on:click="register" value = "Registruj se!"></td></tr>
-                </table>
+                <span class="text-center">Unesite svoje podatke</span>
+                <div class="input-container">		
+                    <input type="text" v-model = "user.name" name="name" required="">
+                    <label>Ime</label>
+                </div>
+                <div class="input-container">		
+                    <input type="text" v-model = "user.surname" name="surname" required="">
+                    <label>Prezime</label>
+                </div>
+                <div class="input-container">		
+                    <input type="text" v-model = "user.gender" name="gender" required="">
+                    <label>Pol</label>
+                </div>
+                <div class="input-container">		
+                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" v-model = "date" name="date" required="">
+                    <label>Datum rođenja</label>
+                </div>
+                <div class="input-container">		
+                    <input type="text" v-model = "user.username" name="username" required="">
+                    <label>Korisničko ime</label>
+                </div>
+                <div class="input-container">		
+                    <input type="password" v-model = "user.password" name="password" required="">
+                    <label>Lozinka</label>
+                </div>
+                <p style="color:red; font-size:20px;">{{errorMessage}}</p>
             </form>
-    	</div>		  
+            </div>
+            <div class="container">  
+            <button class="button-40" v-on:click = "register">Registruj se!</button>  
+            </div>
+    	</div>			  
     	`,
     mounted () {
         axios
@@ -31,15 +54,21 @@ Vue.component("register", {
             event.preventDefault();  
             let b = false;          
             this.users.forEach(user => {                
-                if(user.username==this.username){
+                if(user.username==this.user.username){
                     b=true;
-                    console.warn('Username is taken!')
                 }              
             });
-            if(!b)
+            if(!b && this.user.username!=null && this.user.password!=null && this.user.name!=null && this.user.surname!=null && this.user.gender!=null && this.date!=null
+                  && this.user.username!="" && this.user.password!="" && this.user.name!="" && this.user.surname!="" && this.user.gender!="" && this.date!="")
             {
                 axios.post('rest/users/add/'+this.date, this.user).then(router.push(`/users/`))
+            }
+            else if(b){
+                this.errorMessage = 'Korisnik sa ovim imenom već postoji!';
+            }
+            else{
+                this.errorMessage = 'Popunite sva polja!';
             }   		
-    	}	
+    	}
     }
 });

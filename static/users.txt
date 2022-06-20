@@ -1,8 +1,9 @@
 Pera;sifra;Petar;Peric;Musko;12/12/2002;Customer
-a;a;a;a;a;05/02/2000;Customer
+a;a;a;a;a;31/03/2000;Customer
 Perica;sifrica;Petar;Peric;Musko;02/12/2000;Customer
 Mare;sifra;Marko;Markic;Male;12/12/2003;Customer
 User;pass;Novo;Ime;musko;17/06/2022;Customer
 Mirko;peder;Petar;Peric;Musko;11/12/2000;Customer
+Aieksa;pass;Aleksa;Colovic;Musko;25/03/2000;Customer
 Mirkovic;peder;Petar;Peric;Musko;12/12/2000;Customer
 Maska;123;Masa;kurva;zena;12/11/2000;Customer

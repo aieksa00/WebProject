@@ -8,43 +8,43 @@ Vue.component("sportsobjects", {
 	},
 	    template: ` 
     	<div>
-    		<h2>Prikaz sportskih objekata</h2>
-			<div style="display: flex; justify-content: flex-end">
-				<select name="searchParams" id="searchParams" v-model = "searchParam">
+			<div class="container"><h1>Prikaz sportskih objekata</h1></div>
+			<div class="container">
+				<select name="searchParams" id="searchParams" v-model = "searchParam" style="margin:0 30px 25px 0; font-size:20px">
 					<option value="objectType">Tip Objekta</option>
 					<option value="name">Naziv</option>
 					<option value="location">Lokacija</option>
 					<option value="rating">Ocena</option>
 				</select>
-				<input type="text" v-model = "searchInput" name="searchInput">
-				<button v-on:click = "search">Pretraži</button>
+				<div class="input-container">		
+					<input type="text" v-model = "searchInput" name="searchInput" required="">
+                    <label>Pretraga</label>
+                </div>
+				<button v-on:click = "search" class="button-40" style="margin:0 0 25px 30px">Pretraži</button>
 			</div>
-			</br>
-            <table border="1">
-	    		<tr bgcolor="lightgrey">
-	    			<th>Naziv</th>
-	    			<th>Tip Objekta</th>
-                    <th>Opis</th>
-	    			<th>Status</th>
-					<th>Lokacija</th>
-					<th>Ocena</th>
-					<th>Radno Vreme</th>
-					<th>Slika</th>
-	    		</tr>	    			
-	    		<tr v-for="(o, index) in objects">
-	    			<td>{{o.name}}</td>
-	    			<td>{{o.objectType}}</td>
-                    <td>{{o.description}}</td>
-                    <td v-if="o.status">Open</td>
-					<td v-else>Closed</td>
-					<td>({{o.location.geoLength}}, {{o.location.geoWidth}}) {{o.location.address.street}}
-					{{o.location.address.number}}, {{o.location.address.city}}, {{o.location.address.postCode}}
-					</td>
-					<td>{{o.rating}}</td>
-					<td>{{o.workingHours}}</td>
-					<td><img :src="o.image" alt="Slika objekta"></td>
-	    		</tr>
-	    	</table>
+			<div v-for="(o, index) in objects">
+				<div class="container">
+					<h1>{{o.name}}</h1>
+				</div>
+				<div class="container">
+					<img :src="o.image" alt="Slika objekta" style="
+						max-width: 100%;
+						height: auto;">
+				</div>		
+				<div class="container">
+					<p v-if="o.status" style="font-size:25px">Opis: {{o.description}}. Objekat je otvoren.<br>
+					Tip objekta: {{o.objectType}}<br>
+					Lokacija: ({{o.location.geoLength}}, {{o.location.geoWidth}}) {{o.location.address.street}} {{o.location.address.number}}, {{o.location.address.city}}, {{o.location.address.postCode}}<br>
+					Ocena objekta: {{o.rating}}<br>
+					Radno vreme: {{o.workingHours}}</p>
+
+					<p v-else style="font-size:25px">Opis: {{o.description}}. Objekat je zatvoren.<br>
+					Tip objekta: {{o.objectType}}<br>
+					Lokacija: ({{o.location.geoLength}}, {{o.location.geoWidth}}) {{o.location.address.street}} {{o.location.address.number}}, {{o.location.address.city}}, {{o.location.address.postCode}}<br>
+					Ocena objekta: {{o.rating}}<br>
+					Radno vreme: {{o.workingHours}}</p>
+				</div>
+			</div>
     	</div>		  
     	`,
     mounted () {

@@ -8,21 +8,26 @@ Vue.component("login", {
 	    }
 	},
 	    template: ` 
-    	<div class="container">
-            <div>
+    	<div>
+            <div class="container">
             <form id="forma">
-                <table>
-                    <tr><td>Korisničko ime:</td><td><input type="text" v-model = "username" name="username"></td></tr>
-                    <tr><td>Lozinka:</td><td><input type="password" v-model = "password" name="password"></td></tr>
-                    <tr><td colspan='2'>{{errorMessage}}</td></tr>
-                </table>
+                <span class="text-center">Dobrodošli</span>
+                <div class="input-container">		
+                    <input type="text" v-model = "username" name="username" required="true">
+                    <label>Korisničko ime</label>
+                </div>
+                <div class="input-container">		
+                    <input type="password" v-model = "password" name="password" required="true">
+                    <label>Lozinka</label>
+                </div>
+                <p style="color:red; font-size:16px;">{{errorMessage}}</p>
             </form>
             </div>
-            <div>
-            <button v-on:click = "login">Uloguj se!</button>
+            <div class="container">
+            <button class="button-40" v-on:click = "login">&nbsp&nbspUloguj se!&nbsp&nbsp</button>
             </div>
-            <div>  
-            <button v-on:click = "register">Registruj se?</button>  
+            <div class="container">  
+            <button class="button-40" v-on:click = "register">Registruj se?</button>  
             </div>
     	</div>	
     	`,
